@@ -18,11 +18,11 @@ locals {
 
   rg_name    = terraform.workspace == "default" ? "${var.rgname}" : "${var.rgname}-${local.workspace_suffix}"
   #sa_name    = terraform.workspace == "default" ? "${var.sa_name}" : "${var.sa_name}${local.workspace_suffix}"
-  web_suffix = "<h1>${terraform.workspace}</h1>"
+  # web_suffix = "<h1>${terraform.workspace}</h1>"
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.rgname
+  name     = local.rg_name
   location = var.location
 }
 
